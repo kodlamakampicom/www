@@ -12,8 +12,7 @@
 
 <body>
   <script>
-    setInterval(() => {
-      var x = new XMLHttpRequest();
+    var x = new XMLHttpRequest();
     x.open("GET", "https://ww1.kodlamakampi.com/durum.xml", true);
     x.onreadystatechange = function () {
       if (x.readyState == 4 && x.status == 200) {
@@ -25,8 +24,21 @@
       }
     };
     x.send(null);
+    setInterval(() => {
+      var x = new XMLHttpRequest();
+      x.open("GET", "https://ww1.kodlamakampi.com/durum.xml", true);
+      x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+          var doc = x.responseXML;
+          var hizmet = doc.getElementsByTagName("hizmet")[0].childNodes[0].nodeValue;
+          if (hizmet == "Aktif") {
+            window.location.replace("https://ww1.kodlamakampi.com/");
+          }
+        }
+      };
+      x.send(null);
     }, 10000);
- 
+
   </script>
   <div class="container">
     <div class="row">
