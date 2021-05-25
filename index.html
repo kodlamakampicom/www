@@ -6,7 +6,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kodlama Kampı</title>
 <link rel="icon" href="favicon.png">
-<script async src="kodlama-kampi.js"></script>
+<script>
+var siteLinki = "https://ww1.kodlamakampi.com/";
+var xmlLinki = "https://ww1.kodlamakampi.com/durum.xml";
+var x = new XMLHttpRequest();
+x.open("GET", xmlLinki, true);
+x.onreadystatechange = function () {
+    if (x.readyState == 4 && x.status == 200) {
+        var doc = x.responseXML;
+        var hizmet = doc.getElementsByTagName("hizmet")[0].childNodes[0].nodeValue;
+        if (hizmet == "Aktif") {
+            window.location.replace(siteLinki);
+        }
+    }
+};
+x.send(null);
+setInterval(() => {
+    var x = new XMLHttpRequest();
+    x.open("GET", xmlLinki, true);
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var doc = x.responseXML;
+            var hizmet = doc.getElementsByTagName("hizmet")[0].childNodes[0].nodeValue;
+            if (hizmet == "Aktif") {
+                window.location.replace(siteLinki);
+            }
+        }
+    };
+    x.send(null);
+}, 10000);
+</script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body onload="icerikGostert();">
