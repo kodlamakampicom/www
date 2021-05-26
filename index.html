@@ -63,7 +63,7 @@
         }
         var sayacAktiflestirildiMi = false;
         SunucuKontrolSayaci();
-        function sunucuyuKontrolEt(sayacAktifmi) {
+        function sunucuyuKontrolEt() {
             var siteLinki = "https://ww1.kodlamakampi.com/";
             var xmlLinki = "https://ww1.kodlamakampi.com/durum.xml";
             var x = new XMLHttpRequest();
@@ -75,25 +75,12 @@
                     if (hizmet == "Aktif") {
                         window.location.replace(siteLinki);
                     }
-                    else if (sayacAktifmi) {
-                        if (sayacAktiflestirildiMi == false) {
-                            SunucuKontrolSayaci();
-                        }
-                        sayacAktiflestirildiMi = true;
-                    }
-                }
-                else if (sayacAktifmi) {
-                    if (sayacAktiflestirildiMi == false) {
-                        SunucuKontrolSayaci();
-                    }
-                    sayacAktiflestirildiMi = true;
                 }
             };
             x.send(null);
         }
-        sunucuyuKontrolEt(true);
         setInterval(() => {
-            sunucuyuKontrolEt(false);
+            sunucuyuKontrolEt();
         }, 10000);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
