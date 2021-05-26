@@ -7,6 +7,7 @@
 <title>Kodlama Kampı</title>
 <link rel="icon" href="favicon.png">
 <script>
+function SunucuDurumu() {
 var siteLinki = "https://ww1.kodlamakampi.com/";
 var xmlLinki = "https://ww1.kodlamakampi.com/durum.xml";
 var x = new XMLHttpRequest();
@@ -21,6 +22,11 @@ x.onreadystatechange = function () {
     }
 };
 x.send(null);
+}
+async function KontrolEt() {
+    await SunucuDurumu();
+}
+KontrolEt();
 setInterval(() => {
     var x = new XMLHttpRequest();
     x.open("GET", xmlLinki, true);
@@ -38,11 +44,8 @@ setInterval(() => {
 </script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
-<body onload="icerikGostert();">
-<style id="icerikGizle">
-#icerik{visibility:hidden;}
-</style>
-<div class="container" id="icerik">
+<body>
+<div class="container">
 <div class="row">
 <div class="col-md-3"></div>
 <div class="col-md-6">
@@ -57,13 +60,6 @@ document.write('<p class="container">~Kodlama Kampı Ekibi</p>');
 <div class="col-md-3"></div>
 </div>
 </div>
-<script>
-function icerikGostert() {
-setTimeout(() => {
-document.getElementById('icerikGizle').remove();
-}, 500);
-}
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 crossorigin="anonymous"></script>
