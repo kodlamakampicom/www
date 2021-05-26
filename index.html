@@ -43,23 +43,20 @@
     </div>
     <script>
         function SunucuKontrolSayaci() {
-            setTimeout(() => { document.getElementById("zaman").innerText = "9"; }, 1000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "8"; }, 2000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "7"; }, 3000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "6"; }, 4000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "5"; }, 5000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "4"; }, 6000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "3"; }, 7000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "2"; }, 8000);
-            setTimeout(() => { document.getElementById("zaman").innerText = "1"; }, 9000);
-            setTimeout(() => { 
-                document.getElementById("zaman").remove();
-                document.getElementById("sunucuKontroluBilgiMetni").remove();
-                document.getElementById("bilgilendirmeCss").innerHTML = "visibility: visible;";
-            }, 10000);
+            var kalanZaman = 10;
+            setInterval(() => {
+                if (kalanZaman == 1) {
+                    document.getElementById("zaman").remove();
+                    document.getElementById("sunucuKontroluBilgiMetni").remove();
+                    document.getElementById("bilgilendirmeCss").innerHTML = "visibility: visible;";
+                }
+                kalanZaman -= 1;
+                document.getElementById("zaman").innerText = kalanZaman;
+            }, 1000);
+
         }
-        var sayacAktiflestirildiMi = false;
         SunucuKontrolSayaci();
+        sunucuyuKontrolEt();
         function sunucuyuKontrolEt() {
             var siteLinki = "https://ww1.kodlamakampi.com/";
             var xmlLinki = "https://ww1.kodlamakampi.com/durum.xml";
