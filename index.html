@@ -24,7 +24,7 @@
             <div class="col-md-6">
                 <img src="kodlama-kampi.svg">
                 <p id="sunucuKontroluBilgiMetni" style="font-weight: bold;">Kodlama Kampı'nın Ana Sunucusu Kontrol
-                    Ediliyor... (<span id="zaman">5</span> saniye)</p>
+                    Ediliyor... (<span id="zaman">10</span> saniye)</p>
                 <div id="bilgilendirme">
 
                     <p class="container"><b>Kodlama Kampı'nın Ana Sunucusu Çevrimdışı</b></p>
@@ -43,19 +43,16 @@
     </div>
     <script>
         function SunucuKontrolSayaci() {
-            setTimeout(() => {
-                document.getElementById("zaman").innerText = "4";
-            }, 1000);
-            setTimeout(() => {
-                document.getElementById("zaman").innerText = "3";
-            }, 2000);
-            setTimeout(() => {
-                document.getElementById("zaman").innerText = "2";
-            }, 3000);
-            setTimeout(() => {
-                document.getElementById("zaman").innerText = "1";
-            }, 4000);
-            setTimeout(() => {
+            setTimeout(() => { document.getElementById("zaman").innerText = "9"; }, 1000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "8"; }, 2000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "7"; }, 3000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "6"; }, 4000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "5"; }, 5000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "4"; }, 6000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "3"; }, 7000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "2"; }, 8000);
+            setTimeout(() => { document.getElementById("zaman").innerText = "1"; }, 9000);
+            setTimeout(() => { 
                 document.getElementById("zaman").remove();
                 document.getElementById("sunucuKontroluBilgiMetni").remove();
                 document.getElementById("bilgilendirmeCss").innerHTML = "visibility: visible;";
