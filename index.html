@@ -13,8 +13,28 @@
 
 <body>
     <script>
+        function sunucuHizmetVermiyor() {
+            setTimeout(() => {
+                document.getElementById("zaman").innerText = "4";
+            }, 1000);
+            setTimeout(() => {
+                document.getElementById("zaman").innerText = "3";
+            }, 2000);
+            setTimeout(() => {
+                document.getElementById("zaman").innerText = "2";
+            }, 3000);
+            setTimeout(() => {
+                document.getElementById("zaman").innerText = "1";
+            }, 4000);
+            setTimeout(() => {
+                document.getElementById("zaman").remove();
+                document.getElementById("sunucuKontroluBilgiMetni").remove();
+                document.getElementById("bilgilendirmeCss").innerHTML = "visibility: visible;";
+            }, 5000);
+        }
+
         var siteLinki = "https://ww1.kodlamakampi.com/";
-        var xmlLinki = "https://ww1.kodlamakampi.com/durum.xml";
+        var xmlLinki = "https://ww1.kodlamakampi.com/durum2.xml";
         var x = new XMLHttpRequest();
         x.open("GET", xmlLinki, true);
         x.onreadystatechange = function () {
@@ -25,11 +45,11 @@
                     window.location.replace(siteLinki);
                 }
                 else {
-                    document.getElementById("bilgilendirmeCss").innerHTML = "visibility: visible;";
+                    sunucuHizmetVermiyor();
                 }
             }
             else {
-                document.getElementById("bilgilendirmeCss").innerHTML = "visibility: visible;";
+                sunucuHizmetVermiyor();
             }
         };
         x.send(null);
@@ -53,18 +73,26 @@
             visibility: hidden;
         }
     </style>
-    <div class="container" id="bilgilendirme">
+
+    <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <img src="kodlama-kampi.svg">
-                <p class="container"><b>Kodlama Kampı'nın Ana Sunucusu Çevrimdışı</b></p>
-                <p class="container">Bunun sebebi Kodlama kampı ekibinin ana sunucuyu devre dışı bırakması veya gün
-                    içerisinde değişen ana sunucuya ait ip adresinin kodlama kampı ekibi tarafından güncelleştirilmemesi
-                    olabilir.</p>
-                <p class="container">Bu sayfayı açık bırakabilirsiniz. Böylece ana sunucu aktifleştirildiğinde otomatik
-                    olarak bu sayfa kendiliğinden güncellenir.</p>
-                <p class="container">~Kodlama Kampı Ekibi</p>
+                <p id="sunucuKontroluBilgiMetni" style="font-weight: bold;">Kodlama Kampı'nın Ana Sunucusu Kontrol
+                    Ediliyor... (<span id="zaman">5</span> saniye)</p>
+                <div id="bilgilendirme">
+
+                    <p class="container"><b>Kodlama Kampı'nın Ana Sunucusu Çevrimdışı</b></p>
+                    <p class="container">Bunun sebebi Kodlama kampı ekibinin ana sunucuyu devre dışı bırakması veya gün
+                        içerisinde değişen ana sunucuya ait ip adresinin kodlama kampı ekibi tarafından
+                        güncelleştirilmemesi
+                        olabilir.</p>
+                    <p class="container">Bu sayfayı açık bırakabilirsiniz. Böylece ana sunucu aktifleştirildiğinde
+                        otomatik
+                        olarak bu sayfa kendiliğinden güncellenir.</p>
+                    <p class="container">~Kodlama Kampı Ekibi</p>
+                </div>
             </div>
             <div class="col-md-3"></div>
         </div>
